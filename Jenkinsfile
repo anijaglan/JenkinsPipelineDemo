@@ -19,13 +19,7 @@ pipeline {
                 echo 'Testing..'
 		bat 'mvn test'
             }
-        }
-	stage('Analysis') {
-            steps {
-                echo 'Building..'
-		bat 'mvn sonar:sonar -Psonar'
-            }
-        }
+        }	
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
