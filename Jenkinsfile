@@ -5,25 +5,25 @@ pipeline {
         stage('Clean') {
             steps {
                 echo 'Clean..'
-				sh 'mvn clean'
+		bat 'mvn clean'
             }
         }
-		stage('Build') {
+	stage('Build') {
             steps {
                 echo 'Building..'
-				sh 'mvn clean package -DskipTests'
+		bat 'mvn clean package -DskipTests'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-				sh 'mvn test'
+		bat 'mvn test'
             }
         }
-		stage('Analysis') {
+	stage('Analysis') {
             steps {
                 echo 'Building..'
-				sh 'mvn sonar:sonar -Psonar'
+		bat 'mvn sonar:sonar -Psonar'
             }
         }
         stage('Deploy') {
@@ -31,7 +31,7 @@ pipeline {
                 echo 'Deploying....'
             }
         }
-		stage('Info') {
+	stage('Info') {
             steps {
                 echo 'Running ${env.BUILD_NUMBER} on ${env.BUILD_URL}'
             }
